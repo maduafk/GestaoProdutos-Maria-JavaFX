@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="CalculoImc-JavaFx-Maria">
+    <output-path>$PROJECT_DIR$/out/artifacts/CalculoImc_JavaFx_Maria</output-path>
+    <root id="root">
+      <element id="archive" name="CalculoImc_JavaFx_Maria.jar">
+        <element id="module-output" name="CalculoImc-JavaFx-Maria" />
+      </element>
+    </root>
+  </artifact>
+</component>

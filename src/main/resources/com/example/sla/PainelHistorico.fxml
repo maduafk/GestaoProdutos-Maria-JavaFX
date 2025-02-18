@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+
+<VBox prefHeight="542.0" prefWidth="475.0" style="-fx-background-color: #2b4675;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sla.PainelHistoricoController">
+    <Label fx:id="mensagemLabel" text="Ops!! Essa página ainda não existe :(" style="-fx-text-fill: white; -fx-font-size: 16px;"/>
+</VBox>
