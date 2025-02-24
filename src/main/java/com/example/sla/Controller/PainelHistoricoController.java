@@ -1,11 +1,13 @@
-package com.example.sla;
+package com.example.sla.Controller;
 
+import com.example.sla.Entity.IMCRegistro;
+import com.example.sla.DAO.IMCRegistroDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sla.java.io.ArquivoUtil;
+import javaio.ArquivoUtil;
 
 import java.net.URL;
 import java.util.List;

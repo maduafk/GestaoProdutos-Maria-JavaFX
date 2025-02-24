@@ -1,5 +1,6 @@
-package com.example.sla;
+package com.example.sla.Controller;
 
+import com.example.sla.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

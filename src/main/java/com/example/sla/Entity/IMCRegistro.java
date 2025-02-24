@@ -1,4 +1,4 @@
-package com.example.sla;
+package com.example.sla.Entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

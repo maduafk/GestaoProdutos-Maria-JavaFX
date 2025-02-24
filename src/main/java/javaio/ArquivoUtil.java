@@ -1,6 +1,6 @@
-package sla.java.io;
+package javaio;
 
-import com.example.sla.IMCRegistro;
+import com.example.sla.Entity.IMCRegistro;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

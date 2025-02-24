@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="503.0" prefWidth="501.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sla.CalculoIMCController">
+<VBox prefHeight="503.0" prefWidth="501.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sla.Controller.CalculoIMCController">
    <children>
       <!-- Campo de texto para o nome -->
       <TextField fx:id="nomeField" alignment="CENTER" promptText="Informe seu nome">

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sla.PainelHistoricoController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sla.Controller.PainelHistoricoController">
     <TableView fx:id="tabelaHistorico" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0">
         <columns>
             <TableColumn fx:id="colunaNome" prefWidth="120.0" text="Nome" />

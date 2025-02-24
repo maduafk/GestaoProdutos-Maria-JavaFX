@@ -1,5 +1,7 @@
-package com.example.sla;
+package com.example.sla.Controller;
 
+import com.example.sla.Entity.IMCRegistro;
+import com.example.sla.DAO.IMCRegistroDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

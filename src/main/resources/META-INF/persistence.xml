@@ -5,7 +5,7 @@
     <persistence-unit name="jpa_ProvaN2">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>com.example.sla.IMCRegistro</class>
+        <class>com.example.sla.Entity.IMCRegistro</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

@@ -1,4 +1,6 @@
-package com.example.sla;
+package com.example.sla.DAO;
+
+import com.example.sla.Entity.IMCRegistro;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
