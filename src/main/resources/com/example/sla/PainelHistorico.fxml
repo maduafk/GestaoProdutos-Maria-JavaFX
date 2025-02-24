@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sla.PainelHistoricoController">
     <TableView fx:id="tabelaHistorico" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0">
@@ -14,4 +16,8 @@
             <TableColumn fx:id="colunaClassificacao" prefWidth="180.0" text="Classificação" />
         </columns>
     </TableView>
+    <HBox layoutX="14.0" layoutY="430.0" spacing="10.0">
+        <Button text="Salvar Dados" onAction="#salvarDados" />
+        <Button text="Carregar Dados" onAction="#carregarDados" />
+    </HBox>
 </AnchorPane>

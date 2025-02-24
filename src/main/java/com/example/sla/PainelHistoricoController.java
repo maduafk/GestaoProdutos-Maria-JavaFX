@@ -5,29 +5,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import sla.java.io.ArquivoUtil;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class PainelHistoricoController implements Initializable {
-    @FXML
-    private TableView<IMCRegistro> tabelaHistorico;
-
-    @FXML
-    private TableColumn<IMCRegistro, String> colunaNome;
-
-    @FXML
-    private TableColumn<IMCRegistro, Integer> colunaPeso;
-
-    @FXML
-    private TableColumn<IMCRegistro, Double> colunaAltura;
-
-    @FXML
-    private TableColumn<IMCRegistro, Double> colunaIMC;
-
-    @FXML
-    private TableColumn<IMCRegistro, String> colunaClassificacao;
+    @FXML private TableView<IMCRegistro> tabelaHistorico;
+    @FXML private TableColumn<IMCRegistro, String> colunaNome;
+    @FXML private TableColumn<IMCRegistro, Integer> colunaPeso;
+    @FXML private TableColumn<IMCRegistro, Double> colunaAltura;
+    @FXML private TableColumn<IMCRegistro, Double> colunaIMC;
+    @FXML private TableColumn<IMCRegistro, String> colunaClassificacao;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,10 +33,19 @@ public class PainelHistoricoController implements Initializable {
     }
 
     private void carregarHistorico() {
-        // Obtém os registros do banco de dados
         List<IMCRegistro> registros = IMCRegistroDAO.listarTodos();
-
-        // Adiciona os registros na tabela
         tabelaHistorico.getItems().setAll(registros);
+    }
+
+    @FXML
+    private void salvarDados() {
+        List<IMCRegistro> registros = tabelaHistorico.getItems(); // Obtém os dados da tabela
+        ArquivoUtil.salvarDadosCSV(registros, "dados_pessoas.txt"); // Salva os dados no arquivo
+    }
+
+    @FXML
+    private void carregarDados() {
+        List<IMCRegistro> registros = ArquivoUtil.carregarDadosCSV("dados_pessoas.txt"); // Carrega os dados do arquivo
+        tabelaHistorico.getItems().setAll(registros); // Atualiza a tabela com os dados carregados
     }
 }
