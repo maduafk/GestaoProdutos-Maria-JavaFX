@@ -1,89 +1,81 @@
 package com.example.sla;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CalculoIMCController implements Initializable {
+    @FXML private Slider slPeso;
+    @FXML private Slider slAlt;
+    @FXML private Label altL;
+    @FXML private Label kiloL;
+    @FXML private Text resultadoIMCText;
+    @FXML private Label classificacaoIMC;
+    @FXML private TextField nomeField;
 
-    public Slider slPeso;
-    public Slider slAlt;
-    public Label altL;
-    public Label kiloL;
-    public Text resultadoIMCText; // Text para mostrar o IMC
-    public Label classificacaoIMC; // Label para a classificação do IMC
+    private int peso;
+    private int altura;
 
-    private int Kilo;
-    private int alt;
-
-    // Método para calcular o IMC
     private void calcularIMC() {
-        if (Kilo > 0 && alt > 0) {
-            double alturaEmMetros = alt / 100.0; // Converte a altura para metros
-            double imc = Kilo / (alturaEmMetros * alturaEmMetros); // Calcula o IMC
+        peso = (int) slPeso.getValue();
+        altura = (int) slAlt.getValue();
 
-            // Exibe o valor do IMC com duas casas decimais
+        if (peso > 0 && altura > 0) {
+            double alturaEmMetros = altura / 100.0;
+            double imc = peso / (alturaEmMetros * alturaEmMetros);
             resultadoIMCText.setText(String.format("%.2f", imc));
 
-            // Classificação do IMC
-            String classificacao = "";
-            if (imc < 18.5) {
-                classificacao = "Abaixo do peso";
-            } else if (imc >= 18.5 && imc < 24.9) {
-                classificacao = "Peso Normal";
-            } else if (imc >= 25 && imc < 29.9) {
-                classificacao = "Sobrepeso";
-            } else if (imc >= 30 && imc < 34.9) {
-                classificacao = "Obesidade I";
-            } else if (imc >= 35 && imc < 39.9) {
-                classificacao = "Obesidade II";
-            } else {
-                classificacao = "Obesidade III";
-            }
-
-            // Atualiza o Label de classificação com o resultado
+            String classificacao = getClassificacao(imc);
             classificacaoIMC.setText(classificacao);
+
+            String nome = nomeField.getText().trim();
+            if (!nome.isEmpty()) {
+                // Cria um novo registro e salva no banco de dados
+                IMCRegistro registro = new IMCRegistro(nome, peso, alturaEmMetros, imc, classificacao);
+                IMCRegistroDAO.salvar(registro); // Chama o método salvar
+            } else {
+                System.out.println("Nome não pode estar vazio.");
+            }
+        } else {
+            System.out.println("Peso e altura devem ser maiores que zero.");
         }
     }
 
+    private String getClassificacao(double imc) {
+        if (imc < 18.5) return "Abaixo do peso";
+        if (imc < 24.9) return "Peso Normal";
+        if (imc < 29.9) return "Sobrepeso";
+        if (imc < 34.9) return "Obesidade I";
+        if (imc < 39.9) return "Obesidade II";
+        return "Obesidade III";
+    }
+
+    @FXML
     public void btArm(ActionEvent actionEvent) {
-        // Chama o método de calcular IMC quando o botão for clicado
         calcularIMC();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Ouvinte para o Slider de Peso
-        slPeso.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                // Atualiza o valor do peso
-                Kilo = (int) slPeso.getValue();
-                kiloL.setText(Integer.toString(Kilo) + " KG"); // Atualiza o Label com o novo valor
-            }
+        slPeso.valueProperty().addListener((observable, oldValue, newValue) -> {
+            peso = newValue.intValue();
+            kiloL.setText(peso + " KG");
         });
 
-        // Ouvinte para o Slider de Altura
-        slAlt.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                // Atualiza a altura, com arredondamento para o valor inteiro
-                alt = (int) Math.round(slAlt.getValue());
-                altL.setText(Integer.toString(alt) + " CM"); // Atualiza o Label com a nova altura
-            }
+        slAlt.valueProperty().addListener((observable, oldValue, newValue) -> {
+            altura = newValue.intValue();
+            altL.setText(altura + " CM");
         });
 
-        // Inicializa as labels com valores padrões
         kiloL.setText("0 KG");
         altL.setText("75 CM");
         resultadoIMCText.setText("0.00");
-        classificacaoIMC.setText(""); // Inicializa com o texto vazio
+        classificacaoIMC.setText("");
     }
 }

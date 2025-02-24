@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<VBox prefHeight="542.0" prefWidth="475.0" style="-fx-background-color: #2b4675;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sla.PainelHistoricoController">
-    <Label fx:id="mensagemLabel" text="Ops!! Essa página ainda não existe :(" style="-fx-text-fill: white; -fx-font-size: 16px;"/>
-</VBox>
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sla.PainelHistoricoController">
+    <TableView fx:id="tabelaHistorico" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0">
+        <columns>
+            <TableColumn fx:id="colunaNome" prefWidth="120.0" text="Nome" />
+            <TableColumn fx:id="colunaPeso" prefWidth="100.0" text="Peso (kg)" />
+            <TableColumn fx:id="colunaAltura" prefWidth="100.0" text="Altura (m)" />
+            <TableColumn fx:id="colunaIMC" prefWidth="100.0" text="IMC" />
+            <TableColumn fx:id="colunaClassificacao" prefWidth="180.0" text="Classificação" />
+        </columns>
+    </TableView>
+</AnchorPane>

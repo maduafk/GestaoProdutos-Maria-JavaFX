@@ -12,7 +12,7 @@
 <VBox prefHeight="503.0" prefWidth="501.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sla.CalculoIMCController">
    <children>
       <!-- Campo de texto para o nome -->
-      <TextField alignment="CENTER" promptText="Informe seu nome">
+      <TextField fx:id="nomeField" alignment="CENTER" promptText="Informe seu nome">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="15.0" />
          </VBox.margin>
