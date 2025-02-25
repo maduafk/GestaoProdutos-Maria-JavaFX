@@ -89,10 +89,17 @@
          </VBox.margin>
       </Label>
 
-      <!-- Botão para armazenar os dados -->
-      <Button mnemonicParsing="false" onAction="#btArm" prefHeight="44.0" prefWidth="212.0" style="-fx-background-color: #2b4675;" text="Ver resultado do IMC" textFill="WHITE">
+      <!-- Botão para calcular o IMC -->
+      <Button mnemonicParsing="false" onAction="#btCalcular" prefHeight="44.0" prefWidth="212.0" style="-fx-background-color: #2b4675;" text="Ver resultado do IMC" textFill="WHITE">
          <VBox.margin>
             <Insets left="145.0" top="30.0" />
+         </VBox.margin>
+      </Button>
+
+      <!-- Botão para salvar no histórico -->
+      <Button mnemonicParsing="false" onAction="#btSalvar" prefHeight="44.0" prefWidth="212.0" style="-fx-background-color: #2b4675;" text="Salvar no Histórico" textFill="WHITE">
+         <VBox.margin>
+            <Insets left="145.0" top="10.0" />
          </VBox.margin>
       </Button>
    </children>

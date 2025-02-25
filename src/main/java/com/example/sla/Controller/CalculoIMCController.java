@@ -23,45 +23,8 @@ public class CalculoIMCController implements Initializable {
 
     private int peso;
     private int altura;
-
-    private void calcularIMC() {
-        peso = (int) slPeso.getValue();
-        altura = (int) slAlt.getValue();
-
-        if (peso > 0 && altura > 0) {
-            double alturaEmMetros = altura / 100.0;
-            double imc = peso / (alturaEmMetros * alturaEmMetros);
-            resultadoIMCText.setText(String.format("%.2f", imc));
-
-            String classificacao = getClassificacao(imc);
-            classificacaoIMC.setText(classificacao);
-
-            String nome = nomeField.getText().trim();
-            if (!nome.isEmpty()) {
-                // Cria um novo registro e salva no banco de dados
-                IMCRegistro registro = new IMCRegistro(nome, peso, alturaEmMetros, imc, classificacao);
-                IMCRegistroDAO.salvar(registro); // Chama o método salvar
-            } else {
-                System.out.println("Nome não pode estar vazio.");
-            }
-        } else {
-            System.out.println("Peso e altura devem ser maiores que zero.");
-        }
-    }
-
-    private String getClassificacao(double imc) {
-        if (imc < 18.5) return "Abaixo do peso";
-        if (imc < 24.9) return "Peso Normal";
-        if (imc < 29.9) return "Sobrepeso";
-        if (imc < 34.9) return "Obesidade I";
-        if (imc < 39.9) return "Obesidade II";
-        return "Obesidade III";
-    }
-
-    @FXML
-    public void btArm(ActionEvent actionEvent) {
-        calcularIMC();
-    }
+    private double imc;
+    private String classificacao;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -79,5 +42,47 @@ public class CalculoIMCController implements Initializable {
         altL.setText("75 CM");
         resultadoIMCText.setText("0.00");
         classificacaoIMC.setText("");
+    }
+
+    // Método para calcular o IMC
+    @FXML
+    public void btCalcular(ActionEvent actionEvent) {
+        peso = (int) slPeso.getValue();
+        altura = (int) slAlt.getValue();
+
+        if (peso > 0 && altura > 0) {
+            double alturaEmMetros = altura / 100.0;
+            imc = peso / (alturaEmMetros * alturaEmMetros);
+            resultadoIMCText.setText(String.format("%.2f", imc));
+
+            classificacao = getClassificacao(imc);
+            classificacaoIMC.setText(classificacao);
+        } else {
+            System.out.println("Peso e altura devem ser maiores que zero.");
+        }
+    }
+
+    // Método para salvar no histórico
+    @FXML
+    public void btSalvar(ActionEvent actionEvent) {
+        String nome = nomeField.getText().trim();
+        if (!nome.isEmpty() && imc > 0) {
+            // Cria um novo registro e salva no banco de dados
+            IMCRegistro registro = new IMCRegistro(nome, peso, altura / 100.0, imc, classificacao);
+            IMCRegistroDAO.salvar(registro); // Chama o método salvar
+            System.out.println("Registro salvo com sucesso!");
+        } else {
+            System.out.println("Nome não pode estar vazio e o IMC deve ser calculado primeiro.");
+        }
+    }
+
+    // Método para classificar o IMC
+    private String getClassificacao(double imc) {
+        if (imc < 18.5) return "Abaixo do peso";
+        if (imc < 24.9) return "Peso Normal";
+        if (imc < 29.9) return "Sobrepeso";
+        if (imc < 34.9) return "Obesidade I";
+        if (imc < 39.9) return "Obesidade II";
+        return "Obesidade III";
     }
 }
