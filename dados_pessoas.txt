@@ -1,0 +1,6 @@
+nome,peso,altura,imc,classificacao
+Maria Eduarda,53,1.64,19.705532421177875,Peso Normal
+Teste,83,1.81,25.33500198406642,Sobrepeso
+João,46,1.87,13.154508278761186,Abaixo do peso
+Teste1,82,1.52,35.49168975069252,Obesidade II
+Teste1,82,1.52,35.49168975069252,Obesidade II
