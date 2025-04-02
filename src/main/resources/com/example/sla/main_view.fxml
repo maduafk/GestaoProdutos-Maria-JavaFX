@@ -2,40 +2,63 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.sla.Controller.MainController" spacing="10"
-      style="-fx-padding: 15;">
+      fx:controller="com.example.sla.Controller.MainController"
+      spacing="20"
+      style="-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #f5f7fa, #e4e8f0);">
 
-   <HBox spacing="10">
-      <Button text="Ir para Vendas" onAction="#irParaVendas"/>
-   </HBox>
+   <!-- Título principal -->
+   <Label text="SISTEMA DE GESTÃO DE PRODUTOS"
+          style="-fx-text-fill: #2a5885; -fx-font-size: 24; -fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
 
-   <TableView fx:id="tabelaProdutos">
+   <!-- Tabela de produtos -->
+   <TableView fx:id="tabelaProdutos"
+              style="-fx-background-color: white; -fx-border-color: #d1d5db; -fx-border-radius: 10; -fx-background-radius: 10;">
       <columns>
          <TableColumn fx:id="colCodigo" text="Código" prefWidth="100"/>
-         <TableColumn fx:id="colNome" text="Nome" prefWidth="200"/>
+         <TableColumn fx:id="colNome" text="Nome" prefWidth="250"/>
          <TableColumn fx:id="colPreco" text="Preço (R$)" prefWidth="100"/>
          <TableColumn fx:id="colQuantidade" text="Estoque" prefWidth="80"/>
       </columns>
    </TableView>
 
-   <GridPane hgap="10" vgap="10">
-      <Label text="Código:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-      <TextField fx:id="txtCodigo" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+   <!-- Seção de cadastro -->
+   <Label text="CADASTRO DE PRODUTOS"
+          style="-fx-text-fill: #2a5885; -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 10 0 5 0;"/>
 
-      <Label text="Nome:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-      <TextField fx:id="txtNome" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+   <GridPane hgap="15" vgap="15"
+             style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #d1d5db; -fx-border-radius: 10;">
+      <Label text="Código:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+      <TextField fx:id="txtCodigo" promptText="Ex: PROD001"
+                 style="-fx-background-color: #f8f9fa; -fx-border-color: #ced4da; -fx-border-radius: 5; -fx-padding: 8;"
+                 GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-      <Label text="Preço:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-      <TextField fx:id="txtPreco" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+      <Label text="Nome:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+      <TextField fx:id="txtNome" promptText="Nome do produto"
+                 style="-fx-background-color: #f8f9fa; -fx-border-color: #ced4da; -fx-border-radius: 5; -fx-padding: 8;"
+                 GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-      <Label text="Quantidade:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-      <TextField fx:id="txtQuantidade" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+      <Label text="Preço:" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+      <TextField fx:id="txtPreco" promptText="0.00"
+                 style="-fx-background-color: #f8f9fa; -fx-border-color: #ced4da; -fx-border-radius: 5; -fx-padding: 8;"
+                 GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+      <Label text="Quantidade:" style="-fx-font-weight: bold;" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+      <TextField fx:id="txtQuantidade" promptText="0"
+                 style="-fx-background-color: #f8f9fa; -fx-border-color: #ced4da; -fx-border-radius: 5; -fx-padding: 8;"
+                 GridPane.rowIndex="3" GridPane.columnIndex="1"/>
    </GridPane>
 
-   <HBox spacing="10">
-      <Button text="Adicionar" onAction="#adicionarProduto"/>
-      <Button text="Remover" onAction="#removerProduto"/>
+   <!-- Botões de ação -->
+   <HBox spacing="15" alignment="CENTER">
+      <Button text="Adicionar" onAction="#adicionarProduto"
+              style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 5;"/>
+      <Button text="Remover" onAction="#removerProduto"
+              style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 5;"/>
+      <Button text="Ir para Vendas" onAction="#irParaVendas"
+              style="-fx-background-color: #2a5885; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 5;"/>
    </HBox>
 </VBox>
