@@ -4,12 +4,13 @@ module com.example.sla {
     requires java.sql;
     requires org.hibernate.orm.core;
     requires java.persistence;
-    opens com.example.sla to javafx.fxml, org.hibernate.orm.core;
+
+    opens com.example.sla to javafx.fxml;
+    opens com.example.sla.Controller to javafx.fxml;
+    opens com.example.sla.Entity to org.hibernate.orm.core, javafx.base;
+
     exports com.example.sla;
     exports com.example.sla.Controller;
-    opens com.example.sla.Controller to javafx.fxml, org.hibernate.orm.core;
     exports com.example.sla.Entity;
-    opens com.example.sla.Entity to javafx.fxml, org.hibernate.orm.core;
     exports com.example.sla.DAO;
-    opens com.example.sla.DAO to javafx.fxml, org.hibernate.orm.core;
 }

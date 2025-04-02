@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.sla.Controller.ProdutoController"
+      spacing="10"
+      style="-fx-padding: 20; -fx-background-color: #f0f0f0;">
+
+   <Label text="CADASTRO DE PRODUTOS" style="-fx-font-weight: bold; -fx-font-size: 18; -fx-text-fill: #2b4675;"/>
+
+   <GridPane hgap="10" vgap="10" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ddd; -fx-border-radius: 5;">
+      <Label text="Código:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+      <TextField fx:id="txtCodigo" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Código do produto"/>
+
+      <Label text="Nome:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+      <TextField fx:id="txtNome" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Nome do produto"/>
+
+      <Label text="Preço:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+      <TextField fx:id="txtPreco" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Preço (R$)"/>
+
+      <Label text="Quantidade:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+      <TextField fx:id="txtQuantidade" GridPane.rowIndex="3" GridPane.columnIndex="1" promptText="Quantidade em estoque"/>
+   </GridPane>
+
+   <HBox spacing="10" alignment="CENTER">
+      <Button text="Adicionar" onAction="#adicionarProduto" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+      <Button text="Remover" onAction="#removerProduto" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;"/>
+   </HBox>
+
+   <Label text="LISTA DE PRODUTOS" style="-fx-font-weight: bold; -fx-font-size: 16; -fx-text-fill: #2b4675;"/>
+   <TableView fx:id="tabelaProdutos" style="-fx-background-color: white; -fx-border-color: #ddd;">
+      <columns>
+         <TableColumn fx:id="colCodigo" text="Código" prefWidth="100" style="-fx-font-weight: bold;"/>
+         <TableColumn fx:id="colNome" text="Nome" prefWidth="200" style="-fx-font-weight: bold;"/>
+         <TableColumn fx:id="colPreco" text="Preço (R$)" prefWidth="100" style="-fx-font-weight: bold;"/>
+         <TableColumn fx:id="colQuantidade" text="Estoque" prefWidth="80" style="-fx-font-weight: bold;"/>
+      </columns>
+   </TableView>
+</VBox>

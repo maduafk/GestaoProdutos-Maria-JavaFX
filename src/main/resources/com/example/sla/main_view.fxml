@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.sla.Controller.MainController" spacing="10"
+      style="-fx-padding: 15;">
+
+   <HBox spacing="10">
+      <Button text="Ir para Vendas" onAction="#irParaVendas"/>
+   </HBox>
+
+   <TableView fx:id="tabelaProdutos">
+      <columns>
+         <TableColumn fx:id="colCodigo" text="Código" prefWidth="100"/>
+         <TableColumn fx:id="colNome" text="Nome" prefWidth="200"/>
+         <TableColumn fx:id="colPreco" text="Preço (R$)" prefWidth="100"/>
+         <TableColumn fx:id="colQuantidade" text="Estoque" prefWidth="80"/>
+      </columns>
+   </TableView>
+
+   <GridPane hgap="10" vgap="10">
+      <Label text="Código:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+      <TextField fx:id="txtCodigo" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+      <Label text="Nome:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+      <TextField fx:id="txtNome" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+      <Label text="Preço:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+      <TextField fx:id="txtPreco" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+      <Label text="Quantidade:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+      <TextField fx:id="txtQuantidade" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+   </GridPane>
+
+   <HBox spacing="10">
+      <Button text="Adicionar" onAction="#adicionarProduto"/>
+      <Button text="Remover" onAction="#removerProduto"/>
+   </HBox>
+</VBox>

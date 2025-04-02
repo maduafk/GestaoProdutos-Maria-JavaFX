@@ -1,0 +1,50 @@
+/* Estilos gerais */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Estilos para botões */
+.button {
+    -fx-background-radius: 5;
+    -fx-padding: 8 15 8 15;
+    -fx-font-weight: bold;
+}
+
+.button-primary {
+    -fx-background-color: #2b4675;
+    -fx-text-fill: white;
+}
+
+.button-primary:hover {
+    -fx-background-color: #3a5a8c;
+}
+
+.button-danger {
+    -fx-background-color: #d9534f;
+    -fx-text-fill: white;
+}
+
+.button-danger:hover {
+    -fx-background-color: #c9302c;
+}
+
+/* Estilos para tabelas */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+}
+
+.table-view .column-header {
+    -fx-background-color: #2b4675;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Estilos para campos de texto */
+.text-field, .combo-box {
+    -fx-background-radius: 5;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
