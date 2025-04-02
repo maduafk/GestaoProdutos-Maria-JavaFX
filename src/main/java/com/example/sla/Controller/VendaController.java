@@ -40,6 +40,7 @@ public class VendaController {
         colPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
         colQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
         tabelaItens.setItems(itensVenda);
+        tabelaItens.setStyle("-fx-background-color: white; -fx-border-color: #d1d5db; -fx-border-radius: 10; -fx-background-radius: 10;");
     }
 
     private void carregarProdutos() {
@@ -55,7 +56,7 @@ public class VendaController {
 
             @Override
             public Produto fromString(String string) {
-                return null; // Não necessário para este caso
+                return null;
             }
         });
 
@@ -114,7 +115,7 @@ public class VendaController {
                 return;
             }
 
-            txtTroco.setText(troco.toString());
+            txtTroco.setText(String.format("R$ %.2f", troco));
         } catch (Exception e) {
             mostrarAlerta("Erro", "Valor recebido inválido", Alert.AlertType.ERROR);
         }
@@ -140,7 +141,7 @@ public class VendaController {
             }
             CSVUtil.salvarTodosProdutos(produtos);
 
-            mostrarAlerta("Sucesso", "Venda realizada com sucesso!", Alert.AlertType.INFORMATION);
+            mostrarAlerta("Sucesso", "Venda realizada com sucesso!\nTotal: R$ " + String.format("%.2f", totalVenda), Alert.AlertType.INFORMATION);
             limparVenda();
         } catch (Exception e) {
             mostrarAlerta("Erro", "Erro ao finalizar venda: " + e.getMessage(), Alert.AlertType.ERROR);
@@ -164,7 +165,7 @@ public class VendaController {
                 .map(p -> p.getPreco().multiply(BigDecimal.valueOf(p.getQuantidade())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        txtTotal.setText(totalVenda.toString());
+        txtTotal.setText(String.format("R$ %.2f", totalVenda));
     }
 
     private void limparVenda() {

@@ -14,6 +14,16 @@
    <Label text="SISTEMA DE GESTÃO DE PRODUTOS"
           style="-fx-text-fill: #2a5885; -fx-font-size: 24; -fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
 
+   <!-- Barra de busca -->
+   <HBox spacing="10" alignment="CENTER" style="-fx-padding: 0 0 10 0;">
+      <TextField fx:id="txtBuscaCodigo" promptText="Digite o código do produto"
+                 style="-fx-background-color: #f8f9fa; -fx-border-color: #ced4da; -fx-border-radius: 5; -fx-padding: 8;" prefWidth="250"/>
+      <Button text="Buscar" onAction="#buscarProdutoPorCodigo"
+              style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 5;"/>
+      <Button text="Limpar" onAction="#limparBusca"
+              style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 5;"/>
+   </HBox>
+
    <!-- Tabela de produtos -->
    <TableView fx:id="tabelaProdutos"
               style="-fx-background-color: white; -fx-border-color: #d1d5db; -fx-border-radius: 10; -fx-background-radius: 10;">

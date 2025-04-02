@@ -13,9 +13,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
 
 public class MainController {
-    @FXML private TextField txtCodigo, txtNome, txtPreco, txtQuantidade;
+    @FXML private TextField txtCodigo, txtNome, txtPreco, txtQuantidade, txtBuscaCodigo;
     @FXML private TableView<Produto> tabelaProdutos;
     @FXML private TableColumn<Produto, String> colCodigo, colNome;
     @FXML private TableColumn<Produto, BigDecimal> colPreco;
@@ -40,6 +42,14 @@ public class MainController {
     private void carregarProdutos() {
         produtos.clear();
         produtos.addAll(CSVUtil.carregarProdutos());
+        // Remove qualquer destaque ao recarregar
+        tabelaProdutos.setRowFactory(tv -> new TableRow<Produto>() {
+            @Override
+            protected void updateItem(Produto item, boolean empty) {
+                super.updateItem(item, empty);
+                setStyle("");
+            }
+        });
     }
 
     @FXML
@@ -71,6 +81,47 @@ public class MainController {
         } else {
             mostrarAlerta("Aviso", "Nenhum produto selecionado", Alert.AlertType.WARNING);
         }
+    }
+
+    @FXML
+    private void buscarProdutoPorCodigo() {
+        String codigoBusca = txtBuscaCodigo.getText().trim();
+        if (codigoBusca.isEmpty()) {
+            mostrarAlerta("Aviso", "Digite um código para buscar", Alert.AlertType.WARNING);
+            return;
+        }
+
+        List<Produto> todosProdutos = CSVUtil.carregarProdutos();
+        Optional<Produto> produtoEncontrado = todosProdutos.stream()
+                .filter(p -> p.getCodigo().equalsIgnoreCase(codigoBusca))
+                .findFirst();
+
+        produtos.clear();
+
+        if (produtoEncontrado.isPresent()) {
+            produtos.add(produtoEncontrado.get());
+            // Destaca a linha do produto encontrado
+            tabelaProdutos.setRowFactory(tv -> new TableRow<Produto>() {
+                @Override
+                protected void updateItem(Produto item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item != null && !empty && item.getCodigo().equalsIgnoreCase(codigoBusca)) {
+                        setStyle("-fx-background-color: #e3f2fd; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            });
+        } else {
+            mostrarAlerta("Informação", "Nenhum produto encontrado com o código: " + codigoBusca, Alert.AlertType.INFORMATION);
+            carregarProdutos();
+        }
+    }
+
+    @FXML
+    private void limparBusca() {
+        txtBuscaCodigo.clear();
+        carregarProdutos();
     }
 
     @FXML
