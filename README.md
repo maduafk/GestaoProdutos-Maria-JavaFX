@@ -36,21 +36,38 @@ Finalizar - Conclui venda e atualiza estoque
 
    📦gestao-produtos
 ┣ 📂src
+
 ┃ ┣ 📂main
+
 ┃ ┃ ┣ 📂java
+
 ┃ ┃ ┃ ┣ 📂com/example/sla
+
 ┃ ┃ ┃ ┃ ┣ 📂Controller
+
 ┃ ┃ ┃ ┃ ┃ ┣ 📜MainController.java
+
 ┃ ┃ ┃ ┃ ┃ ┣ 📜VendaController.java
+
 ┃ ┃ ┃ ┃ ┣ 📂Entity
+
 ┃ ┃ ┃ ┃ ┃ ┣ 📜Produto.java
+
 ┃ ┃ ┃ ┃ ┣ 📂util
+
 ┃ ┃ ┃ ┃ ┃ ┣ 📜CSVUtil.java
+
 ┃ ┃ ┣ 📂resources
+
 ┃ ┃ ┃ ┣ 📂com/example/sla
+
 ┃ ┃ ┃ ┃ ┣ 📜main_view.fxml
+
 ┃ ┃ ┃ ┃ ┣ 📜venda_view.fxml
+
 ┣ 📜pom.xml
+
 ┣ 📜produtos.csv
+
 ┣ 📜README.md
 
